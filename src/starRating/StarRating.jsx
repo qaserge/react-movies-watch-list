@@ -17,7 +17,8 @@ const textStyle = {
 };
 
 export default function StarRating({ maxRating = 5 }) {
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
 
   function handleRating(rating) {
     setRating(rating);
@@ -30,11 +31,13 @@ export default function StarRating({ maxRating = 5 }) {
           <Star
             key={i}
             onRate={() => handleRating(i + 1)}
-            full={rating >= i + 1}
+            full={hoverRating ? hoverRating >= i + 1 : rating >= i + 1}
+            onHoverIn={() => setHoverRating(i + 1)}
+            onHoverOut={() => setHoverRating(0)}
           />
         ))}
       </div>
-      <p style={textStyle}>{rating || ""}</p>
+      <p style={textStyle}>{hoverRating || rating || ""}</p>
     </div>
   );
 }
