@@ -1,4 +1,15 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
+TextExpander.propTypes = {
+  collapsedNumWords: PropTypes.number,
+  expandButtonText: PropTypes.string,
+  collapseButtonText: PropTypes.string,
+  buttonColor: PropTypes.string,
+  expanded: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
 
 export default function TextExpander({
   collapsedNumWords = 10,
